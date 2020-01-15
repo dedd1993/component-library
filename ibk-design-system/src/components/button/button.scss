@@ -1,0 +1,19 @@
+$primary-color: green;
+$disabled-bgcolor: lightgrey;
+$disabled-color: white;
+
+:host(.button-disabled) {
+  --opacity: .5;
+  pointer-events: none;
+}
+
+:host(.button-disabled) .button-native {
+  cursor: default;
+  pointer-events: none;
+  background-color: $disabled-bgcolor;
+}
+
+.button-native {
+  background-color: $primary-color;
+  color: $disabled-color;
+}

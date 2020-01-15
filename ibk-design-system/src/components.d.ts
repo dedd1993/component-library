@@ -10,6 +10,9 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
+  interface IbkButton {
+    'disabled': boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -29,17 +32,27 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLIbkButtonElement extends Components.IbkButton, HTMLStencilElement {}
+  var HTMLIbkButtonElement: {
+    prototype: HTMLIbkButtonElement;
+    new (): HTMLIbkButtonElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'ibk-button': HTMLIbkButtonElement;
     'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface IbkButton {
+    'disabled'?: boolean;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -56,6 +69,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'ibk-button': IbkButton;
     'my-component': MyComponent;
   }
 }
@@ -66,6 +80,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'ibk-button': LocalJSX.IbkButton & JSXBase.HTMLAttributes<HTMLIbkButtonElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
