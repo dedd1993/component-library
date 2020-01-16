@@ -1,3 +1,54 @@
-$primary-color: green;
+$primary-color: #00bb31;
 $disabled-bgcolor: lightgrey;
 $disabled-color: white;
+$form-field-text-color: #333;
+
+.form-field {
+  color: $form-field-text-color;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .label-container {
+    font-family: Omnes-Regular!important;
+    font-size: .75rem;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.17;
+    letter-spacing: normal;
+    display: block;
+    margin-bottom: .5rem;
+  }
+
+  .input-container {
+    width: inherit;
+    height: 2.25rem;
+    margin-bottom: 0.25rem;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+
+    input {
+      outline: none;
+      letter-spacing: normal;
+      color: $form-field-text-color;
+      -ms-flex: 1;
+      flex: 1;
+      min-width: 0;
+      border-radius: 0.25rem;
+      border: 1px solid $form-field-text-color;
+      padding-left: 1em;
+      padding-right: 2em;
+      font-family: Montserrat-Regular;
+      height: inherit;
+
+      &:focus,
+      &:active {
+        border: 2px solid $primary-color;
+      }
+    }
+
+  }
+}

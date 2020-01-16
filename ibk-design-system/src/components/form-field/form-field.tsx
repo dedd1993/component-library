@@ -12,9 +12,16 @@ export class IbkFormField {
     return (
       <Host
         class={{
+          'form-field': true
         }}
       >
-        <span>jajaja</span>
+        <div class="label-container">
+          <slot name="label" />
+        </div>
+
+        <div class="input-container">
+          <slot name="input" />
+        </div>
       </Host>
     );
   }
