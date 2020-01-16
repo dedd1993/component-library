@@ -1,4 +1,5 @@
 $primary-color: #00bb31;
+$error-color: #eb0045;
 $disabled-bgcolor: lightgrey;
 $disabled-color: white;
 $form-field-text-color: #333;
@@ -50,5 +51,11 @@ $form-field-text-color: #333;
       }
     }
 
+  }
+
+  &-error {
+    .input-container input {
+      border-color: $error-color !important;
+    }
   }
 }
