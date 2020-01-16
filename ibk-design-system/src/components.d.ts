@@ -12,6 +12,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 export namespace Components {
   interface IbkButton {
     'disabled': boolean;
+    'type': 'submit' | 'reset' | 'button';
   }
   interface MyComponent {
     /**
@@ -52,6 +53,7 @@ declare global {
 declare namespace LocalJSX {
   interface IbkButton {
     'disabled'?: boolean;
+    'type'?: 'submit' | 'reset' | 'button';
   }
   interface MyComponent {
     /**
