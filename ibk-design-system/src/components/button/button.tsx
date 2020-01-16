@@ -4,7 +4,7 @@ import { hasShadowDom } from '../../utils/helpers';
 @Component({
   tag: 'ibk-button',
   styleUrl: 'button.scss',
-  shadow: true
+  shadow: false
 })
 export class IbkButton {
   @Element() el!: HTMLElement;

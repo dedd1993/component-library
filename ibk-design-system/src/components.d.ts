@@ -14,6 +14,7 @@ export namespace Components {
     'disabled': boolean;
     'type': 'submit' | 'reset' | 'button';
   }
+  interface IbkFormField {}
   interface MyComponent {
     /**
     * The first name
@@ -39,6 +40,12 @@ declare global {
     new (): HTMLIbkButtonElement;
   };
 
+  interface HTMLIbkFormFieldElement extends Components.IbkFormField, HTMLStencilElement {}
+  var HTMLIbkFormFieldElement: {
+    prototype: HTMLIbkFormFieldElement;
+    new (): HTMLIbkFormFieldElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
@@ -46,6 +53,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'ibk-button': HTMLIbkButtonElement;
+    'ibk-form-field': HTMLIbkFormFieldElement;
     'my-component': HTMLMyComponentElement;
   }
 }
@@ -55,6 +63,7 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
     'type'?: 'submit' | 'reset' | 'button';
   }
+  interface IbkFormField {}
   interface MyComponent {
     /**
     * The first name
@@ -72,6 +81,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'ibk-button': IbkButton;
+    'ibk-form-field': IbkFormField;
     'my-component': MyComponent;
   }
 }
@@ -83,6 +93,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'ibk-button': LocalJSX.IbkButton & JSXBase.HTMLAttributes<HTMLIbkButtonElement>;
+      'ibk-form-field': LocalJSX.IbkFormField & JSXBase.HTMLAttributes<HTMLIbkFormFieldElement>;
       'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
