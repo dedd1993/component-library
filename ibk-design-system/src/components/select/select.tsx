@@ -1,4 +1,4 @@
-import { Component, h, Host, Element } from '@stencil/core';
+import { Component, h, Host, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 'ibk-select',
@@ -7,6 +7,8 @@ import { Component, h, Host, Element } from '@stencil/core';
 })
 export class IbkSelect {
   @Element() private element: HTMLElement;
+  @Prop({ mutable: true, reflect: true }) value;
+
   private options: Array<HTMLOptionElement> = [];
 
   componentWillLoad() {
@@ -14,18 +16,15 @@ export class IbkSelect {
     this.element.querySelectorAll('option').forEach(n => n.remove());
   }
 
-  private toggleOptions(e: Event) {
-    e.preventDefault();
-    this.element.querySelector('div ul').classList.toggle('active');
+  componentDidLoad() {
+    this.selectAnOptionFromHost();
   }
 
-  private selectAnOption(option: HTMLOptionElement) {
-    this.element.querySelector('div ul').classList.toggle('active');
-    this.element.querySelector('div button span').textContent = option.label;
+  componentDidUpdate() {
+    this.selectAnOptionFromHost();
   }
 
   render() {
-
     return (
       <Host
         class={{
@@ -39,11 +38,29 @@ export class IbkSelect {
           </button>
           <ul class="select-dropdown__list">
             {this.options.map((option) =>
-              <li class="select-dropdown__list-item" onClick={() => this.selectAnOption(option)}>{option.label}</li>
+              <li class="select-dropdown__list-item" data-value={option.value} onClick={() => this.selectAnOption(option)}>{option.label}</li>
             )}
           </ul>
         </div>
       </Host>
     );
+  }
+
+  private toggleOptions(e: Event) {
+    e.preventDefault();
+    this.element.querySelector('div ul').classList.toggle('active');
+  }
+
+  private selectAnOption(option: HTMLOptionElement) {
+    this.element.querySelector('div ul').classList.remove('active');
+    this.element.querySelector('div button span').textContent = option.label;
+    this.value = option.value;
+  }
+
+  private selectAnOptionFromHost() {
+    const selectedOption = this.options.find(o => o.value === this.value);
+    if (selectedOption) {
+      this.selectAnOption(selectedOption);
+    }
   }
 }

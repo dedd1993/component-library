@@ -15,7 +15,9 @@ export namespace Components {
     'type': 'submit' | 'reset' | 'button';
   }
   interface IbkFormField {}
-  interface IbkSelect {}
+  interface IbkSelect {
+    'value': any;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -72,7 +74,9 @@ declare namespace LocalJSX {
     'type'?: 'submit' | 'reset' | 'button';
   }
   interface IbkFormField {}
-  interface IbkSelect {}
+  interface IbkSelect {
+    'value'?: any;
+  }
   interface MyComponent {
     /**
     * The first name
