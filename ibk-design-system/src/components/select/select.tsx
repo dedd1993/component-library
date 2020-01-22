@@ -14,6 +14,8 @@ export class IbkSelect {
 
   @Prop({ mutable: true, reflect: true }) value: any;
 
+  @Prop({ mutable: false, reflect: true }) disabled = false;
+
   @Watch('value')
   valueChanged() {
     this.displayNewValueLabel();
@@ -36,7 +38,7 @@ export class IbkSelect {
         }}
       >
         <div class="select-dropdown">
-          <button class="select-dropdown__button" onClick={(e) => this.onClickAtDropdownInput(e)}>
+          <button class="select-dropdown__button" disabled={this.disabled} onClick={(e) => this.onClickAtDropdownInput(e)}>
             <span class="select-dropdown">Select Items</span>
             <i class="zmdi zmdi-chevron-down"></i>
           </button>
