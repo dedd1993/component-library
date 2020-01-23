@@ -84,8 +84,8 @@ export class IbkSelect {
     if (this.panelOpen === true) {
       this.panelOpen = false;
       this.openedChange.emit(false);
-      this.element.querySelector('div ul').classList.remove('active');
     }
+    this.element.querySelector('div ul').classList.remove('active');
   }
 
   private displayNewValueLabel() {

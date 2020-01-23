@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, Element, h, Host, State } from '@stencil/core';
 
 @Component({
   tag: 'ibk-form-field',
@@ -6,13 +6,23 @@ import { Component, h, Host } from '@stencil/core';
   shadow: false
 })
 export class IbkFormField {
+  @State() isFocused = false;
+
+  @Element() private element: HTMLElement;
+
+  componentDidLoad() {
+    const formControl = this.element.querySelector('[slot="input"]');
+    formControl.addEventListener('focusin', () => this.isFocused = true );
+    formControl.addEventListener('focusout', () => this.isFocused = false );
+  }
 
   render() {
 
     return (
       <Host
         class={{
-          'form-field': true
+          'form-field': true,
+          'form-field-focused': this.isFocused
         }}
       >
         <div class="label-container">

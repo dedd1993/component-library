@@ -26,36 +26,43 @@ $form-field-text-color: #333;
   .input-container {
     width: inherit;
     height: 2.25rem;
+    max-height: 2.25rem;
     margin-bottom: 0.25rem;
-    display: -ms-flexbox;
     display: flex;
     position: relative;
+    border-radius: 0.25rem;
+    border: 1px solid $form-field-text-color;
 
     input {
       outline: none;
       letter-spacing: normal;
       color: $form-field-text-color;
-      -ms-flex: 1;
       flex: 1;
       min-width: 0;
-      border-radius: 0.25rem;
-      border: 1px solid $form-field-text-color;
       padding-left: 1em;
       padding-right: 2em;
       font-family: Montserrat-Regular;
-      height: inherit;
+      height: 100%;
+      background-color: transparent;
+      border: none;
 
       &:focus,
       &:active {
-        border: 2px solid $primary-color;
+        // border: 2px solid $primary-color;
       }
     }
 
   }
 
   &-error {
-    .input-container input {
+    .input-container {
       border-color: $error-color !important;
+    }
+  }
+
+  &-focused {
+    .input-container {
+      border: 2px solid $primary-color;
     }
   }
 }
