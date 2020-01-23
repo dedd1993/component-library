@@ -15,9 +15,10 @@
 
 ## Events
 
-| Event             | Description | Type               |
-| ----------------- | ----------- | ------------------ |
-| `selectionChange` |             | `CustomEvent<any>` |
+| Event             | Description | Type                   |
+| ----------------- | ----------- | ---------------------- |
+| `openedChange`    |             | `CustomEvent<boolean>` |
+| `selectionChange` |             | `CustomEvent<any>`     |
 
 
 ----------------------------------------------

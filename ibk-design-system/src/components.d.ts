@@ -77,6 +77,7 @@ declare namespace LocalJSX {
   interface IbkFormField {}
   interface IbkSelect {
     'disabled'?: boolean;
+    'onOpenedChange'?: (event: CustomEvent<boolean>) => void;
     'onSelectionChange'?: (event: CustomEvent<any>) => void;
     'value'?: any;
   }

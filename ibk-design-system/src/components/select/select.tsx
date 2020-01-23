@@ -8,7 +8,11 @@ import { Component, h, Host, Element, Prop, Event, EventEmitter, Watch } from '@
 export class IbkSelect {
   private options: Array<HTMLOptionElement> = [];
 
+  panelOpen = false;
+
   @Element() private element: HTMLElement;
+
+  @Event({ bubbles: true, composed: true }) openedChange: EventEmitter<boolean>
 
   @Event({ bubbles: true, composed: true }) selectionChange: EventEmitter<any>;
 
@@ -54,7 +58,11 @@ export class IbkSelect {
 
   private onClickAtDropdownInput(e: Event) {
     e.preventDefault();
-    this.toggleOptions();
+    if (this.panelOpen === true) {
+      this.closeOverlayPanel();
+    } else {
+      this.openOverlayPanel();
+    }
   }
 
   private onClickAnOption(option: HTMLOptionElement) {
@@ -62,18 +70,28 @@ export class IbkSelect {
       this.value = option.value; // this will activate @Watch to display value at dropdown input
       this.selectionChange.emit(option.value);
     } else { // user clicks the current selected option
-      this.toggleOptions();
+      this.closeOverlayPanel();
     }
   }
 
-  private toggleOptions() {
-    this.element.querySelector('div ul').classList.toggle('active');
+  private openOverlayPanel() {
+    this.panelOpen = true;
+    this.openedChange.emit(true);
+    this.element.querySelector('div ul').classList.add('active');
+  }
+
+  private closeOverlayPanel() {
+    if (this.panelOpen === true) {
+      this.panelOpen = false;
+      this.openedChange.emit(false);
+      this.element.querySelector('div ul').classList.remove('active');
+    }
   }
 
   private displayNewValueLabel() {
     const selectedOption = this.options.find(o => o.value === this.value);
     if (selectedOption) {
-      this.element.querySelector('div ul').classList.remove('active');
+      this.closeOverlayPanel();
       this.element.querySelector('div button  span').textContent = selectedOption.label;
     }
   }
