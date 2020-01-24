@@ -31,7 +31,8 @@ $form-control-padding-left: 14px;
     margin-bottom: 0.25rem;
     position: relative;
     border-radius: 0.25rem;
-    border: 1px solid $form-field-text-color;
+    // border: 1px solid $form-field-text-color;
+    box-shadow: 0 0 0 1px $form-field-text-color;
 
     input {
       flex: 1;
@@ -48,13 +49,15 @@ $form-control-padding-left: 14px;
 
   &-error {
     .input-container {
-      border-color: $error-color !important;
+      // border-color: $error-color !important;
+      box-shadow: 0 0 0 2px $error-color !important;
     }
   }
 
   &-focused {
     .input-container {
-      border: 2px solid $primary-color;
+      // border: 2px solid $primary-color;
+      box-shadow: 0 0 0 2px $primary-color;
     }
   }
 }
