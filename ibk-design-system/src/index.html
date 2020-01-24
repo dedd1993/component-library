@@ -12,7 +12,60 @@
 <body>
 
   <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-  <ibk-button>ya fue pe</ibk-button>
+
+  <form id="myForm">
+    <ibk-form-field class="form-field-error" id="form-field-test">
+      <label slot="label" for="name">Name</label>
+      <input slot="input" name="name" type="text" value="Daniel">
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label" for="lastname">Lastname</label>
+      <input slot="input" name="lastname" type="text" value="Delgado">
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">Role</label>
+      <ibk-select slot="input" value="MONITOR" id="test">
+        <option value="ADMIN">Admin</option>
+        <option value="MONITOR">Monitor</option>
+        <option value="SALES">Sales</option>
+      </ibk-select>
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">Address</label>
+      <input slot="input" type="text" value="Jr. Manuel Villar 123">
+    </ibk-form-field>
+
+    <ibk-button type="submit">WC Submit Button</ibk-button>
+    <ibk-button type="reset">WC Reset Button</ibk-button>
+  </form>
+
+  <script>
+    const ibkSelect = document.querySelector('#test');
+    const ibkFormFieldTest = document.querySelector('#form-field-test');
+
+    document.querySelector("#myForm").addEventListener("submit", function(e){
+      e.preventDefault();    //stop form from submitting
+      // ibkSelect.disabled = falske;
+    });
+
+    // ibkSelect.addEventListener('selectionChange', event => {
+    //   console.log('selectionChange', event.detail);
+    // });
+
+    // ibkSelect.addEventListener('openedChange', event => {
+    //   console.log('openedChange', event.detail);
+    // });
+
+    ibkSelect.addEventListener('focusin', event => {
+      console.log('ibkSelect: focusin');
+    });
+    ibkSelect.addEventListener('focusout', event => {
+      console.log('ibkSelect: focusout');
+    });
+  </script>
 
 </body>
 </html>
