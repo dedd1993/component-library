@@ -41,17 +41,15 @@ export class IbkSelect {
           'select': true
         }}
       >
-        <div class="select-dropdown">
-          <button class="select-dropdown__button" disabled={this.disabled} onClick={(e) => this.onClickAtDropdownInput(e)}>
-            <span class="select-dropdown">Select Items</span>
-            <i class="zmdi zmdi-chevron-down"></i>
-          </button>
-          <ul class="select-dropdown__list">
-            {this.options.map((option) =>
-              <li class="select-dropdown__list-item" data-value={option.value} onClick={() => this.onClickAnOption(option)}>{option.label}</li>
-            )}
-          </ul>
-        </div>
+        <button class="select__button" disabled={this.disabled} onClick={(e) => this.onClickAtDropdownInput(e)}>
+          <span class="select">Select Items</span>
+          <i class="zmdi zmdi-chevron-down"></i>
+        </button>
+        <ul class="select__list">
+          {this.options.map((option) =>
+            <li class="select__list-item" data-value={option.value} onClick={() => this.onClickAnOption(option)}>{option.label}</li>
+          )}
+        </ul>
       </Host>
     );
   }
@@ -77,7 +75,7 @@ export class IbkSelect {
   private openOverlayPanel() {
     this.panelOpen = true;
     this.openedChange.emit(true);
-    this.element.querySelector('div ul').classList.add('active');
+    this.element.querySelector('ul').classList.add('active');
   }
 
   private closeOverlayPanel() {
@@ -85,14 +83,14 @@ export class IbkSelect {
       this.panelOpen = false;
       this.openedChange.emit(false);
     }
-    this.element.querySelector('div ul').classList.remove('active');
+    this.element.querySelector('ul').classList.remove('active');
   }
 
   private displayNewValueLabel() {
     const selectedOption = this.options.find(o => o.value === this.value);
     if (selectedOption) {
       this.closeOverlayPanel();
-      this.element.querySelector('div button  span').textContent = selectedOption.label;
+      this.element.querySelector('button  span').textContent = selectedOption.label;
     }
   }
 }
