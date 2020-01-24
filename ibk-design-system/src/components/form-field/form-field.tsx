@@ -25,9 +25,7 @@ export class IbkFormField {
           'form-field-focused': this.isFocused
         }}
       >
-        <div class="label-container">
-          <slot name="label" />
-        </div>
+        <slot name="label" />
 
         <div class="input-container">
           <slot name="input" />

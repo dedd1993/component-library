@@ -37,6 +37,7 @@ export class IbkButton {
       <Host
         onClick={this.handleClick}
         class={{
+          'button': true,
           'button-disabled': disabled,
         }}
       >

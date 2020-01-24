@@ -1,38 +1,44 @@
-$primary-color: #00bb31;
-$error-color: #eb0045;
-$disabled-bgcolor: lightgrey;
-$disabled-color: white;
-$form-field-text-color: #333;
-$form-control-height: 36px; //2.25rem
-$form-control-padding-left: 14px;
+$primary-color: #038724;
+$error-color: #c70000;
+
+$form-field-height: 32px;
+$form-field-border-color: #b2c7c7;
+$form-field-disabled-border-color: #d3dfdf;
+$form-control-color: #000000;
+$form-control-padding-left: 16px;
+$form-control-border-radius: 4px;
+$form-control-font-size: 12px;
+$form-control-font-weight: normal;
+$form-control-font-stretch: normal;
+$form-control-font-style: normal;
+$form-control-letter-spacing: normal;
 
 .form-field {
-  color: $form-field-text-color;
+  display: inline-block;
 
   * {
     box-sizing: border-box;
   }
 
-  .label-container {
-    display: block;
-    margin-bottom: .5rem;
-    font-size: .75rem;
-    font-weight: 400;
-    font-style: normal;
+  & > label {
+    font-size: 11px;
+    font-weight: 500;
     font-stretch: normal;
-    line-height: 1.17;
+    font-style: normal;
+    line-height: 2;
     letter-spacing: normal;
+    color: #5a6363;
   }
 
   .input-container {
     display: flex;
-    height: $form-control-height;
-    max-height: $form-control-height;
-    margin-bottom: 0.25rem;
+    height: $form-field-height;
+    max-height: $form-field-height;
+    margin-bottom: 16px;
     position: relative;
-    border-radius: 0.25rem;
-    // border: 1px solid $form-field-text-color;
-    box-shadow: 0 0 0 1px $form-field-text-color;
+    border-radius: $form-control-border-radius;
+    box-shadow: 0 0 0 1px $form-field-border-color;
+    // border: 1px solid $form-field-border-color;
 
     input {
       flex: 1;
@@ -40,9 +46,13 @@ $form-control-padding-left: 14px;
       padding-right: 0px;
       border: none;
       outline: none;
-      letter-spacing: normal;
       background-color: transparent;
-      color: $form-field-text-color;
+      color: $form-control-color;
+      font-size: $form-control-font-size;
+      font-weight: $form-control-font-weight;
+      font-stretch: $form-control-font-stretch;
+      font-style: $form-control-font-style;
+      letter-spacing: $form-control-letter-spacing;
     }
 
   }
@@ -50,14 +60,14 @@ $form-control-padding-left: 14px;
   &-error {
     .input-container {
       // border-color: $error-color !important;
-      box-shadow: 0 0 0 2px $error-color !important;
+      box-shadow: 0 0 0 1.5px $error-color !important;
     }
   }
 
   &-focused {
     .input-container {
-      // border: 2px solid $primary-color;
-      box-shadow: 0 0 0 2px $primary-color;
+      // border: 1.5px solid $primary-color;
+      box-shadow: 0 0 0 1.5px $primary-color;
     }
   }
 }

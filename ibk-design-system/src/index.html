@@ -8,6 +8,12 @@
   <script type="module" src="/build/ibk-design-system.esm.js"></script>
   <script nomodule src="/build/ibk-design-system.js"></script>
 
+  <style>
+    ibk-form-field, ibk-button{
+      display: block !important;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -16,7 +22,7 @@
   <form id="myForm">
     <ibk-form-field id="form-field-test">
       <label slot="label" for="name">Name</label>
-      <input slot="input" name="name" type="text" value="Daniel">
+      <input slot="input" name="name" type="text" value="Daniel" disabled>
     </ibk-form-field>
 
     <ibk-form-field>
