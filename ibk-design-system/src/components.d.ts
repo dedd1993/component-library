@@ -17,6 +17,7 @@ export namespace Components {
   interface IbkFormField {}
   interface IbkSelect {
     'disabled': boolean;
+    'placeholder': string;
     'value': any;
   }
   interface MyComponent {
@@ -79,6 +80,7 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
     'onOpenedChange'?: (event: CustomEvent<boolean>) => void;
     'onSelectionChange'?: (event: CustomEvent<any>) => void;
+    'placeholder'?: string;
     'value'?: any;
   }
   interface MyComponent {

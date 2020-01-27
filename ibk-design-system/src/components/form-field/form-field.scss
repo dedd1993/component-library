@@ -4,6 +4,7 @@ $error-color: #c70000;
 $form-field-height: 32px;
 $form-field-border-color: #b2c7c7;
 $form-field-disabled-border-color: #d3dfdf;
+$form-label-color: #5a6363;
 $form-control-color: #000000;
 $form-control-padding-left: 16px;
 $form-control-border-radius: 4px;
@@ -12,6 +13,17 @@ $form-control-font-weight: normal;
 $form-control-font-stretch: normal;
 $form-control-font-style: normal;
 $form-control-letter-spacing: normal;
+
+.form-control-label {
+  color: $form-control-color;
+  font-size: $form-control-font-size;
+  font-weight: $form-control-font-weight;
+  font-stretch: $form-control-font-stretch;
+  font-style: $form-control-font-style;
+  letter-spacing: $form-control-letter-spacing;
+  padding-left: $form-control-padding-left;
+  padding-right: 0px;
+}
 
 .form-field {
   display: inline-block;
@@ -27,7 +39,7 @@ $form-control-letter-spacing: normal;
     font-style: normal;
     line-height: 2;
     letter-spacing: normal;
-    color: #5a6363;
+    color: $form-label-color;
   }
 
   .input-container {
@@ -42,17 +54,14 @@ $form-control-letter-spacing: normal;
 
     input {
       flex: 1;
-      padding-left: $form-control-padding-left;
-      padding-right: 0px;
       border: none;
       outline: none;
       background-color: transparent;
-      color: $form-control-color;
-      font-size: $form-control-font-size;
-      font-weight: $form-control-font-weight;
-      font-stretch: $form-control-font-stretch;
-      font-style: $form-control-font-style;
-      letter-spacing: $form-control-letter-spacing;
+      @extend .form-control-label;
+
+      &::placeholder { /* Most modern browsers support this now. */
+        color: $form-label-color;
+      }
     }
 
   }

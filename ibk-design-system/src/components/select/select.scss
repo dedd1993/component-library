@@ -4,6 +4,7 @@ $error-color: #c70000;
 $form-field-height: 32px;
 $form-field-border-color: #b2c7c7;
 $form-field-disabled-border-color: #d3dfdf;
+$form-label-color: #5a6363;
 $form-control-color: #000000;
 $form-control-padding-left: 16px;
 $form-control-border-radius: 4px;
@@ -12,6 +13,17 @@ $form-control-font-weight: normal;
 $form-control-font-stretch: normal;
 $form-control-font-style: normal;
 $form-control-letter-spacing: normal;
+
+.form-control-label {
+  color: $form-control-color;
+  font-size: $form-control-font-size;
+  font-weight: $form-control-font-weight;
+  font-stretch: $form-control-font-stretch;
+  font-style: $form-control-font-style;
+  letter-spacing: $form-control-letter-spacing;
+  padding-left: $form-control-padding-left;
+  padding-right: 0px;
+}
 
 .select {
 	position: relative;
@@ -25,13 +37,19 @@ $form-control-letter-spacing: normal;
     display: flex;
     width: inherit;
     height: inherit;
-		padding-left: $form-control-padding-left;
-    padding-right: 0;
-    text-align: left;
+    padding: 0;
+    background-color: transparent;
     border: none;
     outline: none;
 		cursor: pointer;
-		background-color: transparent;
+
+    span {
+      @extend .form-control-label;
+
+      &.placeholder {
+        color: $form-label-color;
+      }
+    }
 
 		.zmdi-chevron-down {
 			position: absolute;
@@ -69,16 +87,13 @@ $form-control-letter-spacing: normal;
 	&__list-item {
 		display: block;
 		list-style-type: none;
-		padding-left: $form-control-padding-left;
 		background: #fff;
 		border-top: 1px solid $form-field-border-color;
-    font-size: $form-control-font-size;
     height: $form-field-height;
 		line-height: $form-field-height;
 		cursor: pointer;
-		color: $form-control-color;
-		text-align: left;
-		transition: all ease-in-out .3s;
+    transition: all ease-in-out .3s;
+    @extend .form-control-label;
 
 		&:hover {
 			background-color: #e1eaea;

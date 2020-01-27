@@ -10,6 +10,8 @@ export class IbkSelect {
 
   panelOpen = false;
 
+  formControlValue: string;
+
   @Element() private element: HTMLElement;
 
   @Event({ bubbles: true, composed: true }) openedChange: EventEmitter<boolean>
@@ -17,6 +19,8 @@ export class IbkSelect {
   @Event({ bubbles: true, composed: true }) selectionChange: EventEmitter<any>;
 
   @Prop({ mutable: true, reflect: true }) value: any;
+
+  @Prop({ mutable: false, reflect: true }) placeholder: string;
 
   @Prop({ mutable: false, reflect: true }) disabled = false;
 
@@ -42,7 +46,9 @@ export class IbkSelect {
         }}
       >
         <button class="select__button" disabled={this.disabled} onClick={(e) => this.onClickAtDropdownInput(e)}>
-          <span class="select">Select Items</span>
+          <span class={{ 'placeholder': !this.formControlValue }}>
+            { this.formControlValue || this.placeholder }
+          </span>
           <i class="zmdi zmdi-chevron-down"></i>
         </button>
         <ul class="select__list">
@@ -88,9 +94,12 @@ export class IbkSelect {
 
   private displayNewValueLabel() {
     const selectedOption = this.options.find(o => o.value === this.value);
+
     if (selectedOption) {
       this.closeOverlayPanel();
-      this.element.querySelector('button  span').textContent = selectedOption.label;
+      this.formControlValue = selectedOption.label;
+    } else {
+      this.formControlValue = null;
     }
   }
 }
