@@ -1,4 +1,4 @@
-import { Component, h, Host, Element, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'ibk-select',
@@ -29,6 +29,15 @@ export class IbkSelect {
     this.displayNewValueLabel();
   }
 
+  @Listen('click', { target: 'window' })
+  public click(event: Event) {
+    if (this.panelOpen === true) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.closeOverlayPanel();
+    }
+  }
+
   componentWillLoad() {
     this.options = Array.from(this.element.getElementsByTagName('option'));
     this.element.querySelectorAll('option').forEach(n => n.remove());
@@ -53,7 +62,7 @@ export class IbkSelect {
         </button>
         <ul class="select__list">
           {this.options.map((option) =>
-            <li class="select__list-item" data-value={option.value} onClick={() => this.onClickAnOption(option)}>{option.label}</li>
+            <li class="select__list-item" data-value={option.value} onClick={(e) => this.onClickAnOption(e, option)}>{option.label}</li>
           )}
         </ul>
       </Host>
@@ -62,6 +71,7 @@ export class IbkSelect {
 
   private onClickAtDropdownInput(e: Event) {
     e.preventDefault();
+    e.stopPropagation();
     if (this.panelOpen === true) {
       this.closeOverlayPanel();
     } else {
@@ -69,7 +79,9 @@ export class IbkSelect {
     }
   }
 
-  private onClickAnOption(option: HTMLOptionElement) {
+  private onClickAnOption(e: Event, option: HTMLOptionElement) {
+    e.preventDefault();
+    e.stopPropagation();
     if (this.value !== option.value) { // user clicks a new option
       this.value = option.value; // this will activate @Watch to display value at dropdown input
       this.selectionChange.emit(option.value);

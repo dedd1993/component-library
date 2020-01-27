@@ -85,7 +85,6 @@ $form-control-letter-spacing: normal;
 
       input {
         color: $form-control-disabled-color;
-        cursor: not-allowed;
 
         &::placeholder { /* Most modern browsers support this now. */
           color: $form-control-disabled-color;
