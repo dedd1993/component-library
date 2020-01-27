@@ -22,7 +22,7 @@
   <form id="myForm">
     <ibk-form-field id="form-field-test">
       <label slot="label" for="name">Name</label>
-      <input slot="input" name="name" type="text" value="Daniel" disabled>
+      <input slot="input" name="name" type="text" value="Daniel">
     </ibk-form-field>
 
     <ibk-form-field>
@@ -30,21 +30,21 @@
       <input slot="input" name="lastname" type="text" value="Delgado">
     </ibk-form-field>
 
-    <ibk-form-field>
+    <ibk-form-field class="form-field-disabled">
       <label slot="label">Password</label>
-      <input slot="input" type="password" placeholder="Password">
+      <input slot="input" type="password" placeholder="Password" disabled>
     </ibk-form-field>
 
-    <ibk-form-field>
+    <ibk-form-field class="form-field-disabled">
       <label slot="label">Role</label>
-      <ibk-select slot="input" value="MONITORs" placeholder="Select role" id="test">
+      <ibk-select slot="input" value="MONITORs" placeholder="Select role" disabled id="test">
         <option value="ADMIN">Admin</option>
         <option value="MONITOR">Monitor</option>
         <option value="SALES">Sales</option>
       </ibk-select>
     </ibk-form-field>
 
-    <ibk-form-field class="form-field-error">
+    <ibk-form-field class="">
       <label slot="label">Address</label>
       <input slot="input" type="text" value="Jr. Manuel Villar 123">
     </ibk-form-field>

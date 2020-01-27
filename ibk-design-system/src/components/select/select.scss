@@ -6,6 +6,7 @@ $form-field-border-color: #b2c7c7;
 $form-field-disabled-border-color: #d3dfdf;
 $form-label-color: #5a6363;
 $form-control-color: #000000;
+$form-control-disabled-color: #5a6363;
 $form-control-padding-left: 16px;
 $form-control-border-radius: 4px;
 $form-control-font-size: 12px;
@@ -41,13 +42,25 @@ $form-control-letter-spacing: normal;
     background-color: transparent;
     border: none;
     outline: none;
-		cursor: pointer;
+    cursor: pointer;
 
     span {
       @extend .form-control-label;
 
       &.placeholder {
         color: $form-label-color;
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+
+      span {
+        color: $form-control-disabled-color;
+
+        &.placeholder {
+          color: $form-control-disabled-color;
+        }
       }
     }
 

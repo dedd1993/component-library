@@ -6,6 +6,7 @@ $form-field-border-color: #b2c7c7;
 $form-field-disabled-border-color: #d3dfdf;
 $form-label-color: #5a6363;
 $form-control-color: #000000;
+$form-control-disabled-color: #5a6363;
 $form-control-padding-left: 16px;
 $form-control-border-radius: 4px;
 $form-control-font-size: 12px;
@@ -50,7 +51,6 @@ $form-control-letter-spacing: normal;
     position: relative;
     border-radius: $form-control-border-radius;
     box-shadow: 0 0 0 1px $form-field-border-color;
-    // border: 1px solid $form-field-border-color;
 
     input {
       flex: 1;
@@ -75,8 +75,22 @@ $form-control-letter-spacing: normal;
 
   &-focused {
     .input-container {
-      // border: 1.5px solid $primary-color;
       box-shadow: 0 0 0 1.5px $primary-color;
+    }
+  }
+
+  &-disabled {
+    .input-container {
+      box-shadow: 0 0 0 1px $form-field-disabled-border-color !important;
+
+      input {
+        color: $form-control-disabled-color;
+        cursor: not-allowed;
+
+        &::placeholder { /* Most modern browsers support this now. */
+          color: $form-control-disabled-color;
+        }
+      }
     }
   }
 }
