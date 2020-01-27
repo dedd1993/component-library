@@ -7,6 +7,7 @@
 
   <script type="module" src="/build/ibk-design-system.esm.js"></script>
   <script nomodule src="/build/ibk-design-system.js"></script>
+  <link rel="stylesheet" href="./assets/icon-font/style.css">
 
   <style>
     ibk-form-field, ibk-button{
@@ -16,7 +17,7 @@
 
 </head>
 <body>
-
+  <span class="icon-arrow-up"></span>
   <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
 
   <form id="myForm">
@@ -30,14 +31,14 @@
       <input slot="input" name="lastname" type="text" value="Delgado">
     </ibk-form-field>
 
-    <ibk-form-field class="form-field-disabled">
+    <ibk-form-field>
       <label slot="label">Password</label>
-      <input slot="input" type="password" placeholder="Password" disabled>
+      <input slot="input" type="password" placeholder="Password">
     </ibk-form-field>
 
-    <ibk-form-field class="form-field-disabled">
+    <ibk-form-field>
       <label slot="label">Role</label>
-      <ibk-select slot="input" value="MONITORs" placeholder="Select role" disabled id="test">
+      <ibk-select slot="input" value="MONITORs" placeholder="Select role" id="ibkSelectTest">
         <option value="ADMIN">Admin</option>
         <option value="MONITOR">Monitor</option>
         <option value="SALES">Sales</option>
@@ -54,7 +55,7 @@
   </form>
 
   <script>
-    const ibkSelect = document.querySelector('#test');
+    const ibkSelect = document.querySelector('#ibkSelectTest');
     const ibkFormFieldTest = document.querySelector('#form-field-test');
 
     document.querySelector("#myForm").addEventListener("submit", function(e){
@@ -70,12 +71,12 @@
     //   console.log('openedChange', event.detail);
     // });
 
-    ibkSelect.addEventListener('focusin', event => {
-      console.log('ibkSelect: focusin');
-    });
-    ibkSelect.addEventListener('focusout', event => {
-      console.log('ibkSelect: focusout');
-    });
+    // ibkSelect.addEventListener('focusin', event => {
+    //   console.log('ibkSelect: focusin');
+    // });
+    // ibkSelect.addEventListener('focusout', event => {
+    //   console.log('ibkSelect: focusout');
+    // });
   </script>
 
 </body>
