@@ -22,7 +22,6 @@ $form-control-letter-spacing: normal;
   font-stretch: $form-control-font-stretch;
   font-style: $form-control-font-style;
   letter-spacing: $form-control-letter-spacing;
-  padding-left: $form-control-padding-left;
   padding-right: 0px;
 }
 
@@ -43,6 +42,7 @@ $form-control-letter-spacing: normal;
     border: none;
     outline: none;
     cursor: pointer;
+    padding-left: $form-control-padding-left;
 
     span {
       @extend .form-control-label;
@@ -88,7 +88,7 @@ $form-control-letter-spacing: normal;
 		transform-origin: top left;
 		transform: scale(1,0);
 		transition: all ease-in-out .3s;
-		z-index: 2;
+		z-index: 10;
 
 		&.active {
 			opacity: 1;
@@ -106,6 +106,7 @@ $form-control-letter-spacing: normal;
 		line-height: $form-field-height;
 		cursor: pointer;
     transition: all ease-in-out .3s;
+    padding-left: $form-control-padding-left;
     @extend .form-control-label;
 
 		&:hover {

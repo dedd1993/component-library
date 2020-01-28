@@ -17,37 +17,43 @@
 
 </head>
 <body>
-  <span class="icon-arrow-up"></span>
   <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
 
   <form id="myForm">
-    <ibk-form-field id="form-field-test">
-      <label slot="label" for="name">Name</label>
-      <input slot="input" name="name" type="text" value="Daniel">
-    </ibk-form-field>
-
     <ibk-form-field>
-      <label slot="label" for="lastname">Lastname</label>
-      <input slot="input" name="lastname" type="text" value="Delgado">
-    </ibk-form-field>
-
-    <ibk-form-field>
-      <label slot="label">Password</label>
-      <input slot="input" type="password" placeholder="Password">
-    </ibk-form-field>
-
-    <ibk-form-field>
-      <label slot="label">Role</label>
-      <ibk-select slot="input" value="MONITORs" placeholder="Select role" id="ibkSelectTest">
-        <option value="ADMIN">Admin</option>
-        <option value="MONITOR">Monitor</option>
-        <option value="SALES">Sales</option>
+      <label slot="label">Plan</label>
+      <ibk-select slot="input" value="" placeholder="Select Plan" id="ibkSelectTest">
+        <option value="BASIC">Basic</option>
+        <option value="STANDAR">Standar</option>
+        <option value="PREMIUM">Premium</option>
       </ibk-select>
+    </ibk-form-field>
+
+    <ibk-form-field id="form-field-test">
+      <label slot="label">Name</label>
+      <input slot="input" type="text" value="Daniel Delgado Diaz">
     </ibk-form-field>
 
     <ibk-form-field class="">
       <label slot="label">Address</label>
       <input slot="input" type="text" value="Jr. Manuel Villar 123">
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <span slot="prefix">$ &nbsp;</span>
+      <label slot="label">Payment Amount</label>
+      <input slot="input" type="text">
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">Credit Card</label>
+      <input slot="input" type="text">
+      <ibk-icon slot="suffix" name="card"></ibk-icon>
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">CVV</label>
+      <input slot="input" type="password">
     </ibk-form-field>
 
     <ibk-button type="submit">WC Submit Button</ibk-button>

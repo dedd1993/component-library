@@ -6,6 +6,8 @@ import { Component, Element, h, Host, State } from '@stencil/core';
   shadow: false
 })
 export class IbkFormField {
+  @State() isAnInputFormControl: boolean;
+
   @State() isFocused = false;
 
   @Element() private element: HTMLElement;
@@ -14,6 +16,8 @@ export class IbkFormField {
     const formControl = this.element.querySelector('[slot="input"]');
     formControl.addEventListener('focusin', () => this.isFocused = true );
     formControl.addEventListener('focusout', () => this.isFocused = false );
+
+    this.isAnInputFormControl = (formControl.tagName === 'INPUT') ;
   }
 
   render() {
@@ -27,8 +31,12 @@ export class IbkFormField {
       >
         <slot name="label" />
 
-        <div class="input-container">
+        <div class={{ 'input-container': true, 'form-control-input': this.isAnInputFormControl }}>
+          <slot name="prefix" />
+
           <slot name="input" />
+
+          <slot name="suffix" />
         </div>
       </Host>
     );
