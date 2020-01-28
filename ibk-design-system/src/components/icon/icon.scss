@@ -1,0 +1,78 @@
+.icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+
+  &[name="arrow-before"]:before {
+    content: "\e900";
+  }
+  &[name="arrow-down"]:before {
+    content: "\e901";
+  }
+  &[name="arrow-next"]:before {
+    content: "\e902";
+  }
+  &[name="arrow-up"]:before {
+    content: "\e903";
+  }
+  &[name="calendar"]:before {
+    content: "\e904";
+  }
+  &[name="card"]:before {
+    content: "\e905";
+  }
+  &[name="check-circle"]:before {
+    content: "\e906";
+  }
+  &[name="check"]:before {
+    content: "\e907";
+  }
+  &[name="close-circle"]:before {
+    content: "\e908";
+  }
+  &[name="close"]:before {
+    content: "\e909";
+  }
+  &[name="home"]:before {
+    content: "\e90a";
+  }
+  &[name="informative"]:before {
+    content: "\e90b";
+  }
+  &[name="loading"]:before {
+    content: "\e90c";
+  }
+  &[name="money"]:before {
+    content: "\e90d";
+  }
+  &[name="pig"]:before {
+    content: "\e90e";
+  }
+  &[name="pipe"]:before {
+    content: "\e90f";
+  }
+  &[name="reload"]:before {
+    content: "\e910";
+  }
+  &[name="repayment"]:before {
+    content: "\e911";
+    color: #c2c2c2;
+  }
+  &[name="search"]:before {
+    content: "\e912";
+  }
+  &[name="send"]:before {
+    content: "\e913";
+  }
+  &[name="settings-copy"]:before {
+    content: "\e914";
+  }
+  &[name="settings"]:before {
+    content: "\e915";
+  }
+  &[name="warning"]:before {
+    content: "\e916";
+  }
+}
