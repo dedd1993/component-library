@@ -8,6 +8,7 @@ $form-label-color: #5a6363;
 $form-control-color: #000000;
 $form-control-disabled-color: #5a6363;
 $form-control-padding-left: 16px;
+$form-control-padding-right: 8px;
 $form-control-border-radius: 4px;
 $form-control-font-size: 12px;
 $form-control-font-weight: normal;
@@ -35,6 +36,8 @@ $form-control-letter-spacing: normal;
 
 	&__button {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: inherit;
     height: inherit;
     padding: 0;
@@ -43,6 +46,7 @@ $form-control-letter-spacing: normal;
     outline: none;
     cursor: pointer;
     padding-left: $form-control-padding-left;
+    padding-right: $form-control-padding-right;
 
     span {
       @extend .form-control-font-properties;
@@ -50,6 +54,10 @@ $form-control-letter-spacing: normal;
       &.placeholder {
         color: $form-label-color;
       }
+    }
+
+    ibk-icon {
+      transition: transform 0.4s ease;
     }
 
     &:disabled {
@@ -63,12 +71,6 @@ $form-control-letter-spacing: normal;
         }
       }
     }
-
-		.zmdi-chevron-down {
-			position: absolute;
-			right: 10px;
-			top: 12px;
-		}
 	}
 
 	&__list {
@@ -89,12 +91,6 @@ $form-control-letter-spacing: normal;
 		transform: scale(1,0);
 		transition: all ease-in-out .3s;
 		z-index: 10;
-
-		&.active {
-			opacity: 1;
-			pointer-events: auto;
-			transform: scale(1,1);
-		}
   }
 
 	&__list-item {
@@ -114,5 +110,18 @@ $form-control-letter-spacing: normal;
       color: $primary-color;
 			transition: all ease-in-out .3s;
 		}
-	}
+  }
+
+  &.active {
+    .select__button {
+      ibk-icon {
+        transform: rotate(-180deg);
+      }
+    }
+    .select__list {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1,1);
+    }
+  }
 }

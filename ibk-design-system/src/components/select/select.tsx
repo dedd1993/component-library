@@ -58,7 +58,7 @@ export class IbkSelect {
           <span class={{ 'placeholder': !this.formControlValue }}>
             { this.formControlValue || this.placeholder }
           </span>
-          <i class="zmdi zmdi-chevron-down"></i>
+          <ibk-icon name="arrow-down"></ibk-icon>
         </button>
         <ul class="select__list">
           {this.options.map((option) =>
@@ -93,7 +93,7 @@ export class IbkSelect {
   private openOverlayPanel() {
     this.panelOpen = true;
     this.openedChange.emit(true);
-    this.element.querySelector('ul').classList.add('active');
+    this.element.classList.add('active');
   }
 
   private closeOverlayPanel() {
@@ -101,7 +101,7 @@ export class IbkSelect {
       this.panelOpen = false;
       this.openedChange.emit(false);
     }
-    this.element.querySelector('ul').classList.remove('active');
+    this.element.classList.remove('active');
   }
 
   private displayNewValueLabel() {
