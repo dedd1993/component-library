@@ -15,7 +15,7 @@ $form-control-font-stretch: normal;
 $form-control-font-style: normal;
 $form-control-letter-spacing: normal;
 
-.form-control-label {
+.form-control-font-properties {
   color: $form-control-color;
   font-family: inherit;
   font-size: $form-control-font-size;
@@ -29,10 +29,6 @@ $form-control-letter-spacing: normal;
   display: inline-block;
   font-family: inherit;
 
-  * {
-    box-sizing: border-box;
-  }
-
   & > label {
     font-size: 11px;
     font-weight: 500;
@@ -43,7 +39,7 @@ $form-control-letter-spacing: normal;
     color: $form-label-color;
   }
 
-  .input-container {
+  .form-control {
     display: flex;
     align-items: center;
     height: $form-field-height;
@@ -54,28 +50,28 @@ $form-control-letter-spacing: normal;
     box-shadow: 0 0 0 1px $form-field-border-color;
     font-family: inherit;
 
-    &.form-control-input {
+    &-input {
       padding-left: $form-control-padding-left;
       padding-right: 8px;
-    }
 
-    input {
-      flex: 1;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      height: 100%;
-      z-index: 9;
-      padding: 0;
-      @extend .form-control-label;
+      input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        height: 100%;
+        z-index: 9;
+        padding: 0;
+        @extend .form-control-font-properties;
 
-      &::placeholder { /* Most modern browsers support this now. */
-        color: $form-label-color;
+        &::placeholder { /* Most modern browsers support this now. */
+          color: $form-label-color;
+        }
       }
     }
 
-    [slot="prefix"] {
-      @extend .form-control-label;
+    span[slot="prefix"], span[slot="suffix"] {
+      @extend .form-control-font-properties;
     }
 
     ibk-icon {
@@ -89,20 +85,20 @@ $form-control-letter-spacing: normal;
   }
 
   &-focused {
-    .input-container {
+    .form-control {
       box-shadow: 0 0 0 1.5px $primary-color;
 
-      ibk-icon[slot="suffix"] {
+      ibk-icon {
         color: $primary-color;
       }
     }
   }
 
   &-error {
-    .input-container {
+    .form-control {
       box-shadow: 0 0 0 1.5px $error-color;
 
-      ibk-icon[slot="suffix"] {
+      ibk-icon {
         color: $error-color;
       }
     }
@@ -110,19 +106,23 @@ $form-control-letter-spacing: normal;
   }
 
   &-disabled {
-    .input-container {
+    .form-control {
       box-shadow: 0 0 0 1px $form-field-disabled-border-color;
 
-      ibk-icon[slot="suffix"] {
-        color: $form-field-disabled-border-color;
-      }
-
-      input {
+      &-input input {
         color: $form-control-disabled-color;
 
         &::placeholder { /* Most modern browsers support this now. */
           color: $form-control-disabled-color;
         }
+      }
+
+      ibk-icon {
+        color: $form-field-disabled-border-color;
+      }
+
+      span[slot="prefix"], span[slot="suffix"] {
+        color: $form-control-disabled-color;
       }
     }
   }

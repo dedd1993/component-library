@@ -31,7 +31,12 @@ export class IbkFormField {
       >
         <slot name="label" />
 
-        <div class={{ 'input-container': true, 'form-control-input': this.isAnInputFormControl }}>
+        <div
+          class={{
+            'form-control': true,
+            'form-control-input': this.isAnInputFormControl
+          }}
+        >
           <slot name="prefix" />
 
           <slot name="input" />

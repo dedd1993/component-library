@@ -15,13 +15,13 @@ $form-control-font-stretch: normal;
 $form-control-font-style: normal;
 $form-control-letter-spacing: normal;
 
-.form-control-label {
+.form-control-font-properties {
   color: $form-control-color;
+  font-family: inherit;
   font-size: $form-control-font-size;
   font-weight: $form-control-font-weight;
   font-stretch: $form-control-font-stretch;
   font-style: $form-control-font-style;
-  letter-spacing: $form-control-letter-spacing;
   padding-right: 0px;
 }
 
@@ -45,7 +45,7 @@ $form-control-letter-spacing: normal;
     padding-left: $form-control-padding-left;
 
     span {
-      @extend .form-control-label;
+      @extend .form-control-font-properties;
 
       &.placeholder {
         color: $form-label-color;
@@ -107,7 +107,7 @@ $form-control-letter-spacing: normal;
 		cursor: pointer;
     transition: all ease-in-out .3s;
     padding-left: $form-control-padding-left;
-    @extend .form-control-label;
+    @extend .form-control-font-properties;
 
 		&:hover {
 			background-color: #e1eaea;
