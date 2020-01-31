@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
 
-  <script type="module" src="/build/ibk-design-system.esm.js"></script>
-  <script nomodule src="/build/ibk-design-system.js"></script>
+  <script type="module" src="/build/ibk-component-library.esm.js"></script>
+  <script nomodule src="/build/ibk-component-library.js"></script>
   <link rel="stylesheet" href="./assets/icon-font/style.css">
 
   <style>
@@ -18,6 +18,12 @@
 </head>
 <body>
   <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+
+  <select value="BASIC" placeholder="Select Plan">
+    <option value="BASIC" disabled>Basic</option>
+    <option value="STANDAR">Standar</option>
+    <option value="PREMIUM">Premium</option>
+  </select>
 
   <form id="myForm">
     <ibk-form-field>
