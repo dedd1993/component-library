@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ibk-component-library": [
+        "dist/ibk-component-library"
+      ],
+      "ibk-component-library/*": [
+        "dist/ibk-component-library/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
