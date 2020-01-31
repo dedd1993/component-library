@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <fieldset [disabled]="false">
+    <ibk-form-field>
+      <label slot="label">DNI</label>
+      <span slot="prefix">$&nbsp;</span>
+      <input slot="input" ibkInput type="text" formControlName="documentNumber" appOnlyDigits #dniElemRef>
+      <ibk-icon slot="suffix" name="informative"></ibk-icon>
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">Email</label>
+      <input slot="input" ibkInput type="email" formControlName="email">
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">Password</label>
+      <input slot="input" ibkInput type="password" placeholder="Password" formControlName="password">
+    </ibk-form-field>
+
+    <ibk-form-field>
+      <label slot="label">Role</label>
+      <ibk-select slot="input" ibkSelect placeholder="Select a role" formControlName="role">
+        <option value="ADMIN">Admin</option>
+        <option value="MONITOR">Monitor</option>
+        <option value="SALES">Sales</option>
+      </ibk-select>
+    </ibk-form-field>
+
+    <div class="button-wrapper">
+      <ibk-button type="submit" [disabled]="form.invalid">Login</ibk-button>
+      <ibk-button type="reset">Reset</ibk-button>
+    </div>
+  </fieldset>
+</form>
