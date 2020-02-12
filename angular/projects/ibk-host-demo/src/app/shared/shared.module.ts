@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { IbkStyleGuideModule } from '../ibk-style-guide/ibk-style-guide.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IbkComponentLibraryModule } from '../../../../ibk-component-library/src/lib/ibk-component-library.module';
 
 import {
   FormatMoneyDirective,
@@ -13,8 +12,6 @@ import {
   OnlyOrganizationNameDirective,
   OnlyAddressDirective
 } from './directives';
-
-const COMPONENTS = [];
 
 const DIRECTIVES = [
   FormatMoneyDirective,
@@ -28,20 +25,15 @@ const DIRECTIVES = [
 
 @NgModule({
   declarations: [
-    ...COMPONENTS,
     ...DIRECTIVES,
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
   ],
   exports: [
-    FormsModule,
-    ReactiveFormsModule,
     CommonModule,
-    IbkStyleGuideModule,
-    ...COMPONENTS,
+    ReactiveFormsModule,
+    IbkComponentLibraryModule,
     ...DIRECTIVES,
   ],
   providers: []
