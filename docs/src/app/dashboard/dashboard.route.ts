@@ -19,10 +19,6 @@ export const DashboardRoutes: Routes = [
                 component: HomeComponent
             },
             {
-                path: 'customer',
-                loadChildren: () => import('./customer/customer.module').then(m => m.CustomerModule),
-            },
-            {
                 path: 'movie',
                 loadChildren: () => import('./movie/movie.module').then(m => m.MovieModule),
             },
