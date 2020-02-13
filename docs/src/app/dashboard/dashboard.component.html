@@ -3,8 +3,7 @@
         <mat-toolbar class="sidenav-header">
             <mat-toolbar-row>
                 <div class="logo">
-                    <img class="logo-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-                    <span class="logo-text secondary-text">NgxAdmin</span>
+                    <app-logo style="height: 20px;"></app-logo>
                 </div>
 
                 <button *ngIf="isSidenavFixed" mat-icon-button aria-label="" (click)="onToggeleSidenav()">
@@ -46,9 +45,9 @@
                     <mat-icon> menu </mat-icon>
                 </button>
 
-                <button fxHide.lt-md mat-raised-button class="warn-A400 u-margin-l-8">
+                <button fxHide.lt-md mat-raised-button class="accent-500 u-margin-l-8">
                     <mat-icon style="font-size: 18px; height: 18px; width: 24px; color: rgba(0,0,0,.54);">dashboard</mat-icon>
-                    Material Theme (Angular 8)
+                    Component Library
                 </button>
 
                 <span fxFlex></span>
