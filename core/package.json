@@ -19,11 +19,16 @@
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "docs:api": "node ./bin/mdToHtml.js"
   },
   "devDependencies": {
     "@stencil/core": "^1.8.4",
-    "@stencil/sass": "^1.1.1"
+    "@stencil/sass": "^1.1.1",
+    "fs": "0.0.1-security",
+    "glob": "^7.1.6",
+    "markdown-it": "^10.0.0",
+    "markdown-to-html": "0.0.13"
   },
   "license": "MIT"
 }
