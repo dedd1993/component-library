@@ -11,6 +11,9 @@ import { PagesService } from 'src/app/core/services/pages.service';
 export class ComponentsComponent implements OnInit {
   @ViewChild('docContent') documentationContent: ElementRef;
 
+  content = `<ibk-button>Default</ibk-button>
+<ibk-button disabled="true">Disabled</ibk-button>`;
+
   constructor(
     private pagesService: PagesService,
     private route: ActivatedRoute,
@@ -22,7 +25,7 @@ export class ComponentsComponent implements OnInit {
         return this.pagesService.getComponentDocumentation(data.componentName);
       }))
       .subscribe((component) => {
-        this.documentationContent.nativeElement.innerHTML = component.htmlContent;
+        this.documentationContent.nativeElement.innerHTML = `${component.htmlContent}`;
       });
   }
 

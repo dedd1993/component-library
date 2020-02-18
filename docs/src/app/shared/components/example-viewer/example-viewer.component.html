@@ -1,0 +1,28 @@
+<div #wrapperOfDOM class="domWrapper"></div>
+
+<div class="menu">
+    <button mat-icon-button>
+        <mat-icon>code</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>file_copy</mat-icon>
+    </button>
+    <button mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+    </button>
+</div>
+
+<div class="codemirror">
+    <ngx-codemirror 
+        [(ngModel)]="htmlContent"
+        [options]="{
+            lineNumbers: false,
+            readOnly: true,
+            theme: 'material'
+        }
+    ">
+    </ngx-codemirror>
+</div>
