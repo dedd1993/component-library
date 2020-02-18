@@ -1,5 +1,5 @@
 <div class="dashboard">
-    <app-sidenav [open]="isSidenavOpen" [fixed]="isSidenavFixed">
+    <app-sidenav [open]="isSidenavOpen" [fixed]="isSidenavFixed" *ngIf="isMenuLoaded">
         <mat-toolbar class="sidenav-header">
             <mat-toolbar-row>
                 <div class="logo">
@@ -19,16 +19,13 @@
                 <dt routerLink="/dashboard/movie" routerLinkActive="active">Movie</dt>
             </dl>
             <dl class="submenu">
-                <dt>Product</dt>
+                <dt>Components</dt>
                 <dd>
-                    <a routerLink="/dashboard/product"
+                    <a *ngFor="let router of componentRouterList"
+                       [routerLink]="['components', router.routerLink]"
                        routerLinkActive="active"
                        [routerLinkActiveOptions]="{exact: true}">
-                       List
-                    </a>
-                    <a routerLink="/dashboard/product/detail"
-                       routerLinkActive="active">
-                       Detalle
+                       {{ router.routerLabel }}
                     </a>
                 </dd>
             </dl>
