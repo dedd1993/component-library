@@ -3,7 +3,8 @@ import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch }
 @Component({
   tag: 'ibk-select',
   styleUrl: 'select.scss',
-  shadow: false
+  shadow: false,
+  scoped: true
 })
 export class IbkSelect {
   private options: Array<HTMLOptionElement> = [];

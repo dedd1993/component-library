@@ -26,7 +26,7 @@ $form-control-letter-spacing: normal;
   padding-right: 0px;
 }
 
-.select {
+:host(.select) {
 	position: relative;
 	display: inline-block;
 	width: 100%;
@@ -34,7 +34,7 @@ $form-control-letter-spacing: normal;
   height: 100%;
   max-height: 100%;
 
-	&__button {
+	.select__button {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,7 +73,7 @@ $form-control-letter-spacing: normal;
     }
 	}
 
-	&__list {
+	.select__list {
 		position: absolute;
 		display: block;
 		left: 0;
@@ -93,7 +93,7 @@ $form-control-letter-spacing: normal;
 		z-index: 10;
   }
 
-	&__list-item {
+	.select__list-item {
 		display: block;
 		list-style-type: none;
 		background: #fff;
@@ -103,6 +103,7 @@ $form-control-letter-spacing: normal;
 		cursor: pointer;
     transition: all ease-in-out .3s;
     padding-left: $form-control-padding-left;
+    margin: 0;
     @extend .form-control-font-properties;
 
 		&:hover {
