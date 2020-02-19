@@ -9,6 +9,10 @@ buildJSON = (src, dest) => {
   glob(src, null, function (er, files) {
     const jsonArray = [];
     files.forEach(item => {
+      const componentApiMdPath = item.replace('demo', 'api');
+      const apiMarkDownContent = fs.readFileSync(componentApiMdPath, 'utf8');
+      const apiHtmlContent = markdownIt.render(apiMarkDownContent);
+
       const markDownContent = fs.readFileSync(item, 'utf8');
       const title = parseMarkdown.getTitle(markDownContent);
       const headers = parseMarkdown.getHeaders(markDownContent);
@@ -29,7 +33,7 @@ buildJSON = (src, dest) => {
         })
         .join('');
 
-      jsonArray.push({ title, headers, htmlContent });
+      jsonArray.push({ title, headers, htmlContent, apiHtmlContent });
     });
 
     fs.writeFileSync(dest, JSON.stringify(jsonArray), 'utf8');
