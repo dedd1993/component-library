@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ComponentFactoryResolver, Injector, ApplicationRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
+
 import { PagesService } from 'src/app/core/services/pages.service';
+import { ExampleViewerComponent } from 'src/app/shared/components/example-viewer/example-viewer.component';
 
 @Component({
   selector: 'app-components',
@@ -9,14 +11,14 @@ import { PagesService } from 'src/app/core/services/pages.service';
   styleUrls: ['./components.component.scss']
 })
 export class ComponentsComponent implements OnInit {
-  @ViewChild('docContent') documentationContent: ElementRef;
-
-  content = `<ibk-button>Default</ibk-button>
-<ibk-button disabled="true">Disabled</ibk-button>`;
+  @ViewChild('docContent') docWrapper: ElementRef;
 
   constructor(
+    private app: ApplicationRef,
+    private injector: Injector,
     private pagesService: PagesService,
-    private route: ActivatedRoute,
+    private resolver: ComponentFactoryResolver,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -25,8 +27,28 @@ export class ComponentsComponent implements OnInit {
         return this.pagesService.getComponentDocumentation(data.componentName);
       }))
       .subscribe((component) => {
-        this.documentationContent.nativeElement.innerHTML = `${component.htmlContent}`;
+        this.docWrapper.nativeElement.innerHTML = `${component.htmlContent}`;
+        this.detectDemos(component.htmlContent);
       });
   }
+
+  private detectDemos(htmlCode: string) {
+    const fakeNode = document.createElement('div');
+    fakeNode.innerHTML = htmlCode;
+    const demos = fakeNode.querySelectorAll('[demo]');
+
+    demos.forEach((item) => {
+      const demoIdentifier = item.getAttribute('demo');
+      const demoNodeDOM = this.docWrapper.nativeElement.querySelector(`[demo="${demoIdentifier}"]`);
+      this.addDynamicExampleViewerComponent(item.innerHTML.trim(), demoNodeDOM);
+    });
+  }
+
+  private addDynamicExampleViewerComponent(codeSource: string, domNodeRef: HTMLElement) {
+    const factory: any = this.resolver.resolveComponentFactory(ExampleViewerComponent);
+    const ref = factory.create(this.injector, [], domNodeRef);
+    ref.instance.content = codeSource;
+    this.app.attachView(ref.hostView);
+ }
 
 }

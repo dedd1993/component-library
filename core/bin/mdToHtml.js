@@ -16,7 +16,13 @@ buildJSON = (src, dest) => {
       const htmlContent = parseMarkdown.getContents(markDownContent)
         .map(section => {
           if (parseMarkdown.demoRegexp.test(section)) {
-            return `<div style="border: 1px solid">${fs.readFileSync(section.slice(9, -1), 'utf8')}</div>`;
+            const demoIdentifier = [...(section.split('/'))].pop();
+
+            return (
+              `<div demo="${demoIdentifier}">
+                ${fs.readFileSync(section.slice(9, -1), 'utf8')}
+              </div>`
+            );
           } else {
             return markdownIt.render(section);
           }
@@ -25,6 +31,7 @@ buildJSON = (src, dest) => {
 
       jsonArray.push({ title, headers, htmlContent });
     });
+
     fs.writeFileSync(dest, JSON.stringify(jsonArray), 'utf8');
   });
 }
