@@ -12,6 +12,7 @@ import { ExampleViewerComponent } from 'src/app/shared/components/example-viewer
 })
 export class ComponentsComponent implements AfterViewInit {
   @ViewChild('docContent') docWrapper: ElementRef;
+  @ViewChild('apiDocWrapper') apiDocWrapper: ElementRef;
 
   constructor(
     private app: ApplicationRef,
@@ -28,6 +29,7 @@ export class ComponentsComponent implements AfterViewInit {
       )
       .subscribe((component) => {
         this.docWrapper.nativeElement.innerHTML = `${component.htmlContent}`;
+        this.apiDocWrapper.nativeElement.innerHTML = component.apiHtmlContent;
         this.detectDemos(component.htmlContent);
       });
   }
