@@ -1,38 +1,39 @@
-.domWrapper {
-    margin: auto;
-    display: flex;
-    outline: 0;
-    position: relative;
-    justify-content: center;
+:host {
+    margin-bottom: 40px;
 
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    padding: 24px;
-}
+    .domWrapper {
+        margin: auto;
+        display: flex;
+        outline: 0;
+        position: relative;
+        justify-content: center;
 
-.menu {
-    top: 0;
-    right: 8px;
-    height: 48px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        padding: 24px;
+    }
 
-    .mat-icon-button {
-        // width: 36px;
-        // height: 36px;
-        // line-height: 36px;
+    .menu {
+        top: 0;
+        right: 8px;
+        height: 48px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
 
-        mat-icon {
-            color: rgba(0, 0, 0, 0.54);
-            font-size: 18px;
-            height: 18px;
-            width: 18px;
-            line-height: 18px;
+        .mat-icon-button {
+
+            mat-icon {
+                color: rgba(0, 0, 0, 0.54);
+                font-size: 18px;
+                height: 18px;
+                width: 18px;
+                line-height: 18px;
+            }
         }
     }
-}
 
-.codemirror {
+    .codemirror {
 
+    }
 }
