@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ComponentFactoryResolver, Injector, ApplicationRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, ComponentFactoryResolver, Injector, ApplicationRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { ExampleViewerComponent } from 'src/app/shared/components/example-viewer
   templateUrl: './components.component.html',
   styleUrls: ['./components.component.scss']
 })
-export class ComponentsComponent implements OnInit {
+export class ComponentsComponent implements AfterViewInit {
   @ViewChild('docContent') docWrapper: ElementRef;
 
   constructor(
@@ -21,11 +21,11 @@ export class ComponentsComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit() {
     this.route.params
-      .pipe(flatMap((data) => {
-        return this.pagesService.getComponentDocumentation(data.componentName);
-      }))
+      .pipe(
+        flatMap((data) => this.pagesService.getComponentDocumentation(data.componentName))
+      )
       .subscribe((component) => {
         this.docWrapper.nativeElement.innerHTML = `${component.htmlContent}`;
         this.detectDemos(component.htmlContent);
