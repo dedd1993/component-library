@@ -4,7 +4,8 @@ import { hasShadowDom } from '../../utils/helpers';
 @Component({
   tag: 'ibk-button',
   styleUrl: 'button.scss',
-  shadow: false
+  shadow: false,
+  scoped: true
 })
 export class IbkButton {
   @Element() el!: HTMLElement;
@@ -42,7 +43,6 @@ export class IbkButton {
         }}
       >
         <button
-          class="button-native"
           type={this.type}
           disabled={disabled}
         >

@@ -2,11 +2,11 @@ $primary-color: #038724;
 $disabled-bgcolor: #e6eaea;
 $disabled-color: #5a6363;
 
-.button {
+:host(.button) {
   height: 32px;
   display: inline-block;
 
-  .button-native {
+  button {
     border-radius: 4px;
     border-color: $primary-color;
     border: 0px solid;
@@ -30,17 +30,15 @@ $disabled-color: #5a6363;
     color: #ffffff;
   }
 
-  &-disabled,
-  :host(.button-disabled) {
+  &.button-disabled {
     --opacity: .5;
     pointer-events: none;
-  }
 
-  &-disabled .button-native,
-  :host(.button-disabled) .button-native {
-    cursor: default;
-    pointer-events: none;
-    background-color: $disabled-bgcolor;
-    color: $disabled-color;
+    button {
+      cursor: default;
+      pointer-events: none;
+      background-color: $disabled-bgcolor;
+      color: $disabled-color;
+    }
   }
 }
