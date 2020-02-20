@@ -29,6 +29,7 @@ $form-control-letter-spacing: normal;
 .form-field {
   display: inline-block;
   font-family: inherit;
+  width: 160px;
 
   & > label {
     font-size: 11px;
@@ -53,7 +54,7 @@ $form-control-letter-spacing: normal;
 
     &-input {
       padding-left: $form-control-padding-left;
-      padding-right: 8px;
+      padding-right: $form-control-padding-right;
 
       input {
         flex: 1;
@@ -63,6 +64,8 @@ $form-control-letter-spacing: normal;
         height: 100%;
         z-index: 9;
         padding: 0;
+        box-sizing: border-box;
+        width: 100%;
         @extend .form-control-font-properties;
 
         &::placeholder { /* Most modern browsers support this now. */
