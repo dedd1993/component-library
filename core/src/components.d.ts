@@ -23,20 +23,6 @@ export namespace Components {
     'placeholder': string;
     'value': any;
   }
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
-  }
 }
 
 declare global {
@@ -65,18 +51,11 @@ declare global {
     prototype: HTMLIbkSelectElement;
     new (): HTMLIbkSelectElement;
   };
-
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
   interface HTMLElementTagNameMap {
     'ibk-button': HTMLIbkButtonElement;
     'ibk-form-field': HTMLIbkFormFieldElement;
     'ibk-icon': HTMLIbkIconElement;
     'ibk-select': HTMLIbkSelectElement;
-    'my-component': HTMLMyComponentElement;
   }
 }
 
@@ -96,27 +75,12 @@ declare namespace LocalJSX {
     'placeholder'?: string;
     'value'?: any;
   }
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
-  }
 
   interface IntrinsicElements {
     'ibk-button': IbkButton;
     'ibk-form-field': IbkFormField;
     'ibk-icon': IbkIcon;
     'ibk-select': IbkSelect;
-    'my-component': MyComponent;
   }
 }
 
@@ -130,7 +94,6 @@ declare module "@stencil/core" {
       'ibk-form-field': LocalJSX.IbkFormField & JSXBase.HTMLAttributes<HTMLIbkFormFieldElement>;
       'ibk-icon': LocalJSX.IbkIcon & JSXBase.HTMLAttributes<HTMLIbkIconElement>;
       'ibk-select': LocalJSX.IbkSelect & JSXBase.HTMLAttributes<HTMLIbkSelectElement>;
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
 }
