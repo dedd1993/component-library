@@ -1,5 +1,8 @@
 $primary-color: #038724;
-$error-color: #c70000;
+$informative-color: #2f4a9f;
+$success-color: #038724;
+$warning-color: #ff9600;
+$error-color: #eb0045;
 
 $form-field-height: 32px;
 $form-field-border-color: #b2c7c7;
@@ -98,6 +101,36 @@ $form-control-letter-spacing: normal;
     }
   }
 
+  &-informative {
+    .form-control {
+      box-shadow: 0 0 0 1.5px $informative-color;
+
+      ibk-icon {
+        color: $informative-color;
+      }
+    }
+  }
+
+  &-success {
+    .form-control {
+      box-shadow: 0 0 0 1.5px $success-color;
+
+      ibk-icon {
+        color: $success-color;
+      }
+    }
+  }
+
+  &-warning {
+    .form-control {
+      box-shadow: 0 0 0 1.5px $warning-color;
+
+      ibk-icon {
+        color: $warning-color;
+      }
+    }
+  }
+
   &-error {
     .form-control {
       box-shadow: 0 0 0 1.5px $error-color;
@@ -106,7 +139,6 @@ $form-control-letter-spacing: normal;
         color: $error-color;
       }
     }
-
   }
 
   &-disabled {

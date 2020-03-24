@@ -14,7 +14,9 @@ export namespace Components {
     'disabled': boolean;
     'type': 'submit' | 'reset' | 'button';
   }
-  interface IbkFormField {}
+  interface IbkFormField {
+    'state': 'informative' | 'success' | 'warning' | 'error';
+  }
   interface IbkIcon {
     'name': string;
   }
@@ -64,7 +66,9 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
     'type'?: 'submit' | 'reset' | 'button';
   }
-  interface IbkFormField {}
+  interface IbkFormField {
+    'state'?: 'informative' | 'success' | 'warning' | 'error';
+  }
   interface IbkIcon {
     'name'?: string;
   }

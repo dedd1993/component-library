@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, State } from '@stencil/core';
+import { Component, Element, h, Host, State, Prop } from '@stencil/core';
 
 @Component({
   tag: 'ibk-form-field',
@@ -6,6 +6,9 @@ import { Component, Element, h, Host, State } from '@stencil/core';
   shadow: false
 })
 export class IbkFormField {
+
+  @Prop() state: 'informative' | 'success' | 'warning' | 'error';
+
   @State() isAnInputFormControl: boolean;
 
   @State() isFocused = false;
@@ -26,7 +29,8 @@ export class IbkFormField {
       <Host
         class={{
           'form-field': true,
-          'form-field-focused': this.isFocused
+          'form-field-focused': this.isFocused,
+          ...this.getFormFieldStatusClass()
         }}
       >
         <slot name="label" />
@@ -34,7 +38,7 @@ export class IbkFormField {
         <div
           class={{
             'form-control': true,
-            'form-control-input': this.isAnInputFormControl
+            'form-control-input': this.isAnInputFormControl,
           }}
         >
           <slot name="prefix" />
@@ -45,5 +49,9 @@ export class IbkFormField {
         </div>
       </Host>
     );
+  }
+
+  private getFormFieldStatusClass() {
+    return this.state ? { [`form-field-${this.state}`]: true } : {};
   }
 }
