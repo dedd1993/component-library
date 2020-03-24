@@ -11,55 +11,54 @@
 
   <style>
     ibk-form-field, ibk-button{
-      display: block !important;
+      /* display: block !important; */
+      width: 400px;
     }
   </style>
 
 </head>
 <body>
 
-  <select value="BASIC" placeholder="Select Plan">
-    <option value="BASIC" disabled>Basic</option>
-    <option value="STANDAR">Standar</option>
-    <option value="PREMIUM">Premium</option>
-  </select>
-
   <form id="myForm">
+    <input type="text">
+    <br>
+
     <ibk-form-field>
       <label slot="label">Plan</label>
-      <ibk-select slot="input" value="" placeholder="Select Plan" id="ibkSelectTest">
+      <ibk-select slot="input" value="" placeholder="Select Plan">
         <option value="BASIC">Basic</option>
         <option value="STANDAR">Standar</option>
         <option value="PREMIUM">Premium</option>
       </ibk-select>
     </ibk-form-field>
+    <br>
 
-    <ibk-form-field id="form-field-test">
+    <ibk-form-field style="width: 120px;">
       <label slot="label">Name</label>
       <input slot="input" type="text" value="Daniel Delgado Diaz">
     </ibk-form-field>
-
-    <ibk-form-field class="">
-      <label slot="label">Address</label>
-      <input slot="input" type="text" value="Jr. Manuel Villar 123">
-    </ibk-form-field>
+    <br>
 
     <ibk-form-field>
       <span slot="prefix">$ &nbsp;</span>
       <label slot="label">Payment Amount</label>
       <input slot="input" type="text">
     </ibk-form-field>
+    <br>
 
     <ibk-form-field>
       <label slot="label">Credit Card</label>
+      <ibk-icon slot="prefix" name="card"></ibk-icon>
       <input slot="input" type="text">
-      <ibk-icon slot="suffix" name="card"></ibk-icon>
     </ibk-form-field>
+    <br>
 
     <ibk-form-field>
-      <label slot="label">CVV</label>
-      <input slot="input" type="password">
+      <label slot="label">Credit Card</label>
+      <input slot="input" value="12345678901234567890" type="text">
+      <ibk-icon slot="suffix" name="card"></ibk-icon>
     </ibk-form-field>
+    <br>
 
     <ibk-button type="submit">WC Submit Button</ibk-button>
     <ibk-button type="reset">WC Reset Button</ibk-button>

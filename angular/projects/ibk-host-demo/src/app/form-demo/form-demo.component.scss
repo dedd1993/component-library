@@ -7,6 +7,10 @@
     margin: 0;
     padding: 0;
 
+    ibk-form-field {
+      width: 100%;;
+    }
+
     & > * {
       display: block;
     }
