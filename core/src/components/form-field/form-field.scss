@@ -32,7 +32,7 @@ $form-control-letter-spacing: normal;
 .form-field {
   display: inline-block;
   font-family: inherit;
-  width: 160px;
+  padding-bottom: 16px;
 
   & > label {
     font-size: 11px;
@@ -49,7 +49,6 @@ $form-control-letter-spacing: normal;
     align-items: center;
     height: $form-field-height;
     max-height: $form-field-height;
-    margin-bottom: 16px;
     position: relative;
     border-radius: $form-control-border-radius;
     box-shadow: 0 0 0 1px $form-field-border-color;
@@ -89,6 +88,14 @@ $form-control-letter-spacing: normal;
       color: $form-field-border-color;
     }
 
+  }
+
+  [slot="hint"] {
+    color: $form-label-color;
+    font-size: 10px;
+    line-height: 10px;
+    margin-top: 6px;
+    margin-left: 4px;
   }
 
   &-focused {
@@ -138,6 +145,10 @@ $form-control-letter-spacing: normal;
       ibk-icon {
         color: $error-color;
       }
+    }
+
+    [slot="hint"] {
+      color: $error-color;
     }
   }
 

@@ -7,7 +7,7 @@ import { Component, Element, h, Host, State, Prop } from '@stencil/core';
 })
 export class IbkFormField {
 
-  @Prop() state: 'informative' | 'success' | 'warning' | 'error';
+  @Prop() state: 'informative' | 'success' | 'warning' | 'error' | 'disabled';
 
   @State() isAnInputFormControl: boolean;
 
@@ -47,6 +47,8 @@ export class IbkFormField {
 
           <slot name="suffix" />
         </div>
+
+        <slot name="hint" />
       </Host>
     );
   }

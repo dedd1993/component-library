@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                                 | Default     |
-| -------- | --------- | ----------- | ---------------------------------------------------- | ----------- |
-| `state`  | `state`   |             | `"error" \| "informative" \| "success" \| "warning"` | `undefined` |
+| Property | Attribute | Description | Type                                                               | Default     |
+| -------- | --------- | ----------- | ------------------------------------------------------------------ | ----------- |
+| `state`  | `state`   |             | `"disabled" \| "error" \| "informative" \| "success" \| "warning"` | `undefined` |
 
 
 ----------------------------------------------

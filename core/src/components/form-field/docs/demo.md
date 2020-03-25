@@ -27,10 +27,10 @@ Hint labels are additional descriptive text that appears below the form field's 
 in RTL), and one end-aligned.
 
 Hint labels are specified in one of two ways: either by using the `hintLabel` property of
-`<ibk-form-field>`, or by adding a `<mat-hint>` element inside the form field. When adding a hint
+`<ibk-form-field>`, or by adding a `<p slot="hint">` element inside the form field. When adding a hint
 via the `hintLabel` property, it will be treated as the start hint. Hints added via the
-`<mat-hint>` hint element can be added to either side by setting the `align` property on
-`<mat-hint>` to either `start` or `end`. Attempting to add multiple hints to the same side will
+`<p slot="hint">` hint element can be added to either side by setting the `align` property on
+`<p slot="hint">` to either `start` or `end`. Attempting to add multiple hints to the same side will
 raise an error.
 
 {{"demo": "src/components/form-field/docs/form-field-hint.html"}}

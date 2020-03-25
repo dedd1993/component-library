@@ -10,12 +10,12 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface IbkButton {
+  interface IbkButtonx {
     'disabled': boolean;
     'type': 'submit' | 'reset' | 'button';
   }
   interface IbkFormField {
-    'state': 'informative' | 'success' | 'warning' | 'error';
+    'state': 'informative' | 'success' | 'warning' | 'error' | 'disabled';
   }
   interface IbkIcon {
     'name': string;
@@ -30,10 +30,10 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLIbkButtonElement extends Components.IbkButton, HTMLStencilElement {}
-  var HTMLIbkButtonElement: {
-    prototype: HTMLIbkButtonElement;
-    new (): HTMLIbkButtonElement;
+  interface HTMLIbkButtonxElement extends Components.IbkButtonx, HTMLStencilElement {}
+  var HTMLIbkButtonxElement: {
+    prototype: HTMLIbkButtonxElement;
+    new (): HTMLIbkButtonxElement;
   };
 
   interface HTMLIbkFormFieldElement extends Components.IbkFormField, HTMLStencilElement {}
@@ -54,7 +54,7 @@ declare global {
     new (): HTMLIbkSelectElement;
   };
   interface HTMLElementTagNameMap {
-    'ibk-button': HTMLIbkButtonElement;
+    'ibk-buttonx': HTMLIbkButtonxElement;
     'ibk-form-field': HTMLIbkFormFieldElement;
     'ibk-icon': HTMLIbkIconElement;
     'ibk-select': HTMLIbkSelectElement;
@@ -62,12 +62,12 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface IbkButton {
+  interface IbkButtonx {
     'disabled'?: boolean;
     'type'?: 'submit' | 'reset' | 'button';
   }
   interface IbkFormField {
-    'state'?: 'informative' | 'success' | 'warning' | 'error';
+    'state'?: 'informative' | 'success' | 'warning' | 'error' | 'disabled';
   }
   interface IbkIcon {
     'name'?: string;
@@ -81,7 +81,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
-    'ibk-button': IbkButton;
+    'ibk-buttonx': IbkButtonx;
     'ibk-form-field': IbkFormField;
     'ibk-icon': IbkIcon;
     'ibk-select': IbkSelect;
@@ -94,7 +94,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'ibk-button': LocalJSX.IbkButton & JSXBase.HTMLAttributes<HTMLIbkButtonElement>;
+      'ibk-buttonx': LocalJSX.IbkButtonx & JSXBase.HTMLAttributes<HTMLIbkButtonxElement>;
       'ibk-form-field': LocalJSX.IbkFormField & JSXBase.HTMLAttributes<HTMLIbkFormFieldElement>;
       'ibk-icon': LocalJSX.IbkIcon & JSXBase.HTMLAttributes<HTMLIbkIconElement>;
       'ibk-select': LocalJSX.IbkSelect & JSXBase.HTMLAttributes<HTMLIbkSelectElement>;
