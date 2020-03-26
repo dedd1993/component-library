@@ -7,13 +7,9 @@ import { MaterialModule } from './material.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { ConfirmDialogComponent } from './utils/dialogs/confirm-dialog/confirm-dialog.component';
-import { AlertDialogComponent } from './utils/dialogs/alert-dialog/alert-dialog.component';
 import { LogoComponent } from './components/logo/logo.component';
 
 const COMPONENTS = [
-  AlertDialogComponent,
-  ConfirmDialogComponent,
   SidenavComponent,
   LogoComponent
 ];
@@ -35,9 +31,5 @@ const COMPONENTS = [
     PerfectScrollbarModule,
     ...COMPONENTS
   ],
-  entryComponents: [
-    AlertDialogComponent,
-    ConfirmDialogComponent
-  ]
 })
 export class SharedModule { }

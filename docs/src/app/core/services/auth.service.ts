@@ -57,26 +57,6 @@ export class AuthService {
       );
   }
 
-  loginWithRefreshToken(): Observable<any> {
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
-
-    const body = new URLSearchParams();
-    body.set('grant_type', 'refresh_token');
-    body.set('client_id', OAUTH_DATA.client_id);
-    body.set('client_secret', OAUTH_DATA.client_secret);
-    body.set('refresh_token', this.refreshToken);
-    body.set('scope', OAUTH_DATA.scope);
-
-    return this.http.post(HttpApi.oauthLogin, body.toString(), { headers })
-      .pipe(
-        map((response: any) => {
-          localStorage.setItem('session', JSON.stringify(response));
-          return response;
-        })
-      );
-  }
-
   isLogged(): boolean {
     return localStorage.getItem('session') ? true : false;
   }

@@ -3,7 +3,6 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpHeaders, HttpRequest, Http
 import { Observable, throwError, TimeoutError } from 'rxjs';
 import { map, catchError, finalize, timeout } from 'rxjs/operators';
 
-import { HttpError } from './http-error';
 import { environment } from '../../../environments/environment';
 
 const APP_XHR_TIMEOUT = 30000;
@@ -59,12 +58,7 @@ export class AppInterceptor implements HttpInterceptor {
       default: // Other Error
     }
 
-    let customError = new HttpError();
-    try {
-      customError = HttpError.initWithCode(errorResponse.error.errors[0].code);
-    } catch (e) { }
-
-    return throwError(customError);
+    return throwError(errorResponse);
   }
 
   private handleRequestCompleted(): void {
