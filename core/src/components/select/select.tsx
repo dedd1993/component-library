@@ -2,31 +2,32 @@ import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch }
 
 @Component({
   tag: 'ibk-select',
-  styleUrl: 'select.scss',
+  styleUrl: 'ibk-select.scss',
   shadow: false,
-  scoped: true
+  scoped: true,
 })
 export class IbkSelect {
-  private options: Array<HTMLOptionElement> = [];
 
-  panelOpen = false;
+  @Event({ bubbles: true, composed: true }) public openedChange: EventEmitter<boolean>;
 
-  formControlValue: string;
+  @Event({ bubbles: true, composed: true }) public selectionChange: EventEmitter<any>;
+
+  @Prop({ mutable: true, reflect: true }) public value: any;
+
+  @Prop({ mutable: false, reflect: true }) public placeholder: string;
+
+  @Prop({ mutable: false, reflect: true }) public disabled = false;
 
   @Element() private element: HTMLElement;
 
-  @Event({ bubbles: true, composed: true }) openedChange: EventEmitter<boolean>
+  private options: HTMLOptionElement[] = [];
 
-  @Event({ bubbles: true, composed: true }) selectionChange: EventEmitter<any>;
+  private panelOpen = false;
 
-  @Prop({ mutable: true, reflect: true }) value: any;
-
-  @Prop({ mutable: false, reflect: true }) placeholder: string;
-
-  @Prop({ mutable: false, reflect: true }) disabled = false;
+  private formControlValue: string;
 
   @Watch('value')
-  valueChanged() {
+  public valueChanged() {
     this.displayNewValueLabel();
   }
 
@@ -39,45 +40,69 @@ export class IbkSelect {
     }
   }
 
-  componentWillLoad() {
+  public componentWillLoad() {
     this.options = Array.from(this.element.getElementsByTagName('option'));
-    this.element.querySelectorAll('option').forEach(n => n.remove());
+    this.element.querySelectorAll('option').forEach((n) => n.remove());
+
+    this.element.addEventListener('focusin', (e) => {
+      if (this.disabled) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      }
+    });
   }
 
-  componentDidLoad() {
+  public componentDidLoad() {
     this.displayNewValueLabel();
   }
 
-  render() {
+  public render() {
     return (
       <Host
         class={{
-          'select': true
+          select: true,
         }}
       >
-        <button class="select__button" disabled={this.disabled} onClick={(e) => this.onClickAtDropdownInput(e)}>
-          <span class={{ 'placeholder': !this.formControlValue }}>
+        <div
+          class={{
+            'select__button': true,
+            'select__button--disabled': this.disabled,
+          }}
+          onKeyDown={(e) => !this.disabled && this.onKeyDownDropdownInput(e)}
+          onClick={(e) => !this.disabled && this.onClickAtDropdownInput(e)}
+          tabIndex={ this.disabled ? -1 : 0 }
+        >
+          <span class={{ placeholder : !this.formControlValue }}>
             { this.formControlValue || this.placeholder }
           </span>
-          <ibk-icon name="arrow-down"></ibk-icon>
-        </button>
+          <ibk-icon-v2 name="arrow-down"></ibk-icon-v2>
+        </div>
         <ul class="select__list">
-          {this.options.map((option) =>
-            <li class="select__list-item" data-value={option.value} onClick={(e) => this.onClickAnOption(e, option)}>{option.label}</li>
-          )}
+          {this.options.map((option) => (
+            <li
+              class="select__list-item"
+              data-value={option.value}
+              onClick={(e) => this.onClickAnOption(e, option)}>
+              {option.label}
+            </li>
+          ))}
         </ul>
       </Host>
     );
   }
 
+  private onKeyDownDropdownInput(e: KeyboardEvent) {
+    e.stopPropagation();
+    if (e.which === 13) {
+      this.toogleOverlayPanel();
+    }
+  }
+
   private onClickAtDropdownInput(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    if (this.panelOpen === true) {
-      this.closeOverlayPanel();
-    } else {
-      this.openOverlayPanel();
-    }
+    this.toogleOverlayPanel();
   }
 
   private onClickAnOption(e: Event, option: HTMLOptionElement) {
@@ -88,6 +113,14 @@ export class IbkSelect {
       this.selectionChange.emit(option.value);
     } else { // user clicks the current selected option
       this.closeOverlayPanel();
+    }
+  }
+
+  private toogleOverlayPanel() {
+    if (this.panelOpen === true) {
+      this.closeOverlayPanel();
+    } else {
+      this.openOverlayPanel();
     }
   }
 
@@ -106,7 +139,7 @@ export class IbkSelect {
   }
 
   private displayNewValueLabel() {
-    const selectedOption = this.options.find(o => o.value === this.value);
+    const selectedOption = this.options.find((o) => o.value === this.value);
 
     if (selectedOption) {
       this.closeOverlayPanel();
@@ -115,4 +148,5 @@ export class IbkSelect {
       this.formControlValue = null;
     }
   }
+
 }

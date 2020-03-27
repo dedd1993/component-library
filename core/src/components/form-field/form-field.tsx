@@ -1,21 +1,28 @@
-import { Component, Element, h, Host, State, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { FormFieldState } from './ibk-form-field.enum';
 
 @Component({
   tag: 'ibk-form-field',
-  styleUrl: 'form-field.scss',
-  shadow: false
+  styleUrl: 'ibk-form-field.scss',
+  shadow: false,
 })
 export class IbkFormField {
 
-  @Prop() state: 'informative' | 'success' | 'warning' | 'error' | 'disabled';
+  @Prop() public state: FormFieldState;
 
-  @State() isAnInputFormControl: boolean;
+  @Prop({ attribute: 'formControlError' }) public formControlError = false;
 
-  @State() isFocused = false;
+  @Prop({ attribute: 'formControlDisabled' }) public formControlDisabled = false;
+
+  @Prop({ attribute: 'displayStateIcon' }) public displayStateIcon = false;
+
+  @State() private isAnInputFormControl: boolean;
+
+  @State() private isFocused = false;
 
   @Element() private element: HTMLElement;
 
-  componentDidLoad() {
+  public componentDidLoad() {
     const formControl = this.element.querySelector('[slot="input"]');
     formControl.addEventListener('focusin', () => this.isFocused = true );
     formControl.addEventListener('focusout', () => this.isFocused = false );
@@ -23,14 +30,15 @@ export class IbkFormField {
     this.isAnInputFormControl = (formControl.tagName === 'INPUT') ;
   }
 
-  render() {
-
+  public render() {
     return (
       <Host
         class={{
           'form-field': true,
           'form-field-focused': this.isFocused,
-          ...this.getFormFieldStatusClass()
+          'form-field-error': this.formControlError,
+          'form-field-disabled': this.formControlDisabled,
+          ...this.getFormFieldStatusClass(),
         }}
       >
         <slot name="label" />
@@ -46,6 +54,8 @@ export class IbkFormField {
           <slot name="input" />
 
           <slot name="suffix" />
+
+          { this.displayStateIcon && <ibk-icon-v2 name={this.getStateIconName()}></ibk-icon-v2>}
         </div>
 
         <slot name="hint" />
@@ -55,5 +65,20 @@ export class IbkFormField {
 
   private getFormFieldStatusClass() {
     return this.state ? { [`form-field-${this.state}`]: true } : {};
+  }
+
+  private getStateIconName(): string {
+    if (this.formControlError) {
+      return 'warning';
+    }
+
+    switch (this.state) {
+      case FormFieldState.informative:
+        return 'informative';
+      case FormFieldState.error:
+        return 'warning';
+      default:
+        return;
+    }
   }
 }
