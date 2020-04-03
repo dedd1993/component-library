@@ -1,0 +1,65 @@
+$primary-color: #00bb31;
+$informative-color: #2f4a9f;
+$success-color: #00bb31;
+$warning-color: #ff9600;
+$error-color: #eb0045;
+
+$form-field-height: 2rem;
+$form-field-border-color: #333;
+$form-field-disabled-border-color: #d3dfdf;
+$form-label-color: #333;
+$form-control-color: #333;
+$form-control-disabled-color: #c2c2c2;
+$form-control-padding-left: 16px;
+$form-control-padding-right: 8px;
+$form-control-border-radius: 0.25rem;
+$form-control-font-size: 0.75rem;
+$form-control-font-weight: 400;
+$form-control-font-stretch: normal;
+$form-control-font-style: normal;
+$form-control-letter-spacing: normal;
+$form-control-line-height: 1.17;
+$form-control-font-family: Omnes-Regular !important;
+
+.form-control-font-properties {
+  color: $form-control-color;
+  font-family: $form-control-font-family;
+  font-size: $form-control-font-size;
+  font-weight: $form-control-font-weight;
+  font-stretch: $form-control-font-stretch;
+  font-style: $form-control-font-style;
+  line-height: $form-control-line-height;
+  letter-spacing: $form-control-letter-spacing;
+  padding-right: 0;
+}
+
+:host {
+  display: block;
+  list-style-type: none;
+  background-color: #fff;
+  color: $form-control-color;
+  border-bottom: 1px solid #e7e7e7;
+  height: $form-field-height;
+  line-height: $form-field-height;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  padding-left: $form-control-padding-left;
+  margin: 0;
+
+  @extend .form-control-font-properties;
+
+  &[selected] {
+    color: $primary-color;
+  }
+
+  &:hover, &.key-hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    transition: all ease-in-out 0.3s;
+  }
+
+  &[disabled] {
+    background-color: #fff !important;
+    color: #707070;
+    cursor: default;
+  }
+}
